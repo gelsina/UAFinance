@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="mainStyle" parent="Base.Theme.AppCompat.Light">
+        <item name="android:background">#DDFFCC</item>
+        <item name="android:textColor">#000000</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="minMaxCurrinceStyle" parent="Base.Theme.AppCompat.Light">
+        <item name="android:background">#BBAA33</item>
+        <item name="android:textColor">#000000</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="listStyle" parent="Base.Theme.AppCompat.Light">
+        <item name="android:background">#DDFFBB</item>
+        <item name="android:textColor">#000000</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>

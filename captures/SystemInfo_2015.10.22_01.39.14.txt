@@ -1,0 +1,33 @@
+Applications Memory Usage (kB):
+Uptime: 20987686 Realtime: 20987686
+
+** MEMINFO in pid 23987 [smikhlevskiy.testthereads] **
+                         Shared  Private     Heap     Heap     Heap
+                   Pss    Dirty    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------
+       Native     1171      804     1124     6364     6299       64
+       Dalvik     2828    11524     2084     9152     9085       67
+       Cursor        0        0        0                           
+       Ashmem        0        0        0                           
+    Other dev        4       24        0                           
+     .so mmap      858     2020      176                           
+    .jar mmap        0        0        0                           
+    .apk mmap      105        0        0                           
+    .ttf mmap        3        0        0                           
+    .dex mmap     1684        0       12                           
+   Other mmap       79       24       76                           
+      Unknown      328       12      328                           
+        TOTAL     7060    14408     3800    15516    15384      131
+ 
+ Objects
+               Views:       14         ViewRootImpl:        1
+         AppContexts:        3           Activities:        1
+              Assets:        2        AssetManagers:        2
+       Local Binders:        8        Proxy Binders:       14
+    Death Recipients:        0
+     OpenSSL Sockets:        0
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 

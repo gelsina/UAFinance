@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">UAFinance</string>
+    <string name="title_activity_finance">UAFinance</string>
+    <string name="financeua_json_path">http://resources.finance.ua/ru/public/currency-cash.json</string>
+    <string-array name="askbid">
+        <item>Покупка</item>
+        <item>Продажа</item>
+    </string-array>
+    <string name="default_city">Киев</string>
+    <string name="default_currancie">USD</string>
+
+    <string name="title_activity_organization">Организация</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="USD">USD</string>
+    <string name="RUB">RUB</string>
+    <string name="EUR">EUR</string>
+    <string name="organization_title">Название:</string>
+    <string name="organization_region">Регион:</string>
+    <string name="organization_city">Город:</string>
+    <string name="organization_adress_text">Адресс</string>
+    <string name="currancie">Валюта</string>
+    <string name="ask">Покупка</string>
+    <string name="bid">Продажа</string>
+    <string name="nullvall">0.0</string>
+</resources>
