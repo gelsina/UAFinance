@@ -24,4 +24,6 @@
     <string name="ask">Покупка</string>
     <string name="bid">Продажа</string>
     <string name="nullvall">0.0</string>
+    <string name="telephone">Телефон</string>
+    <string name="grivna">Гривны</string>
 </resources>

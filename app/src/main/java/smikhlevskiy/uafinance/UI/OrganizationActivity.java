@@ -2,6 +2,7 @@ package smikhlevskiy.uafinance.UI;
 
 import android.app.TaskStackBuilder;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -32,7 +35,7 @@ public class OrganizationActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
 
-        Organization organization = (Organization) getIntent().getExtras().getParcelable("organization");
+        final Organization organization = (Organization) getIntent().getExtras().getParcelable("organization");
 
 
         ((TextView) findViewById(R.id.organization_title)).setText(organization.getTitle());
@@ -51,6 +54,16 @@ public class OrganizationActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.organization_link)).setText(organization.getLink());
 
+        ((TextView) findViewById(R.id.organization_telephone)).setText(organization.getPhone());
+
+        ((Button) findViewById(R.id.buttonCallPhone)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "Your Phone_number"));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", organization.getPhone(), null));
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
