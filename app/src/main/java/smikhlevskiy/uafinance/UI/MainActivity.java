@@ -29,6 +29,7 @@ import smikhlevskiy.uafinance.adapters.OrganizationListAdapter;
 import smikhlevskiy.uafinance.model.FinanceUA;
 import smikhlevskiy.uafinance.model.Organization;
 
+
 public class MainActivity extends AppCompatActivity {
     //private EditText resultTextEdit;
     final static String TAG = MainActivity.class.getSimpleName();
@@ -37,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
     ListView organizationListView;
     Handler mainActivityReDrawHandler;
 
+    /*-----------*/
+    public void startRefreshDatas() {
+        (new RefreshFinanceUAAsyncTask(
+                this,
+                mainActivityReDrawHandler,
+                organizationListAdapter,
+                (Spinner) findViewById(R.id.spinerCurrency),
+                (Spinner) findViewById(R.id.spinerCity)
+        )).execute(getString(R.string.financeua_json_path));
+
+    }
 
     /* ------------*/
     public void reDrawMainActivity() {
@@ -53,15 +65,14 @@ public class MainActivity extends AppCompatActivity {
 
         ((BaseAdapter) organizationListView.getAdapter()).notifyDataSetChanged();
 
-        ((TextView)findViewById(R.id.USD_ask)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.USD)).getAsk());
-        ((TextView)findViewById(R.id.USD_bid)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.USD)).getBid());
+        ((TextView) findViewById(R.id.USD_ask)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.USD)).getAsk());
+        ((TextView) findViewById(R.id.USD_bid)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.USD)).getBid());
 
-        ((TextView)findViewById(R.id.EUR_ask)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.EUR)).getAsk());
-        ((TextView)findViewById(R.id.EUR_bid)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.EUR)).getBid());
+        ((TextView) findViewById(R.id.EUR_ask)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.EUR)).getAsk());
+        ((TextView) findViewById(R.id.EUR_bid)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.EUR)).getBid());
 
-        ((TextView)findViewById(R.id.RUB_ask)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.RUB)).getAsk());
-        ((TextView)findViewById(R.id.RUB_bid)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.RUB)).getBid());
-
+        ((TextView) findViewById(R.id.RUB_ask)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.RUB)).getAsk());
+        ((TextView) findViewById(R.id.RUB_bid)).setText(financeUA.getMinMaxCurrencies().get(getString(R.string.RUB)).getBid());
 
 
     }
@@ -172,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
         organizationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
                 Organization organization = (Organization) organizationListAdapter.getItem(position);
                 Intent intent = new Intent(MainActivity.this, OrganizationActivity.class);
 
@@ -182,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("region", organizationListAdapter.getFinanceUA().getRegions().get(organization.getRegionId()));
 
                 startActivity(intent);
+
             }
         });
 
@@ -200,8 +211,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        //startRefreshDatas();
         Log.i(TAG, "End OnCreate");
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -223,13 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.refreshmenuitem:
-                (new RefreshFinanceUAAsyncTask(
-                        this,
-                        mainActivityReDrawHandler,
-                        organizationListAdapter,
-                        (Spinner) findViewById(R.id.spinerCurrency),
-                        (Spinner) findViewById(R.id.spinerCity)
-                )).execute(getString(R.string.financeua_json_path));
+                startRefreshDatas();
                 break;
             case android.R.id.home:
                 finish();
@@ -253,5 +261,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startRefreshDatas();
     }
 }

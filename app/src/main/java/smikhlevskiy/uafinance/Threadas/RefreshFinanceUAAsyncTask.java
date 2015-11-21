@@ -39,6 +39,10 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
     WeakReference<Context> context;
     WeakReference<Handler> reDrawHandler;
 
+    static final String TAG="RefreshThread";
+
+    String tempFile;
+
     public RefreshFinanceUAAsyncTask(
             Context context,
             Handler reDrawHandler,
@@ -50,12 +54,15 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
         this.spinnerCurrency = new WeakReference<Spinner>(spinnerCurrency);
         this.spinnerCity = new WeakReference<Spinner>(spinnerCity);
         this.context = new WeakReference<Context>(context);
+        tempFile = context.getCacheDir().getPath() + "/" + "financeUA.txt";
     }
 
     @Override
     protected FinanceUA doInBackground(String... params) {
         StringBuilder bulder = new StringBuilder("");
         try {
+
+        Thread.sleep(10000);//simulate lon read
             //  from URL
             InputStreamReader isr;
             if (true) {
@@ -84,12 +91,18 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
 
         } catch (MalformedURLException e1) {
             e1.printStackTrace();
+            return null;
         } catch (IOException e1) {
             e1.printStackTrace();
+            return null;
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+            return null;
         }
 
         Gson gson = new Gson();
-
+        //saveToCache();
         FinanceUA financeUA = (FinanceUA) gson.fromJson(bulder.toString(), FinanceUA.class);
 
 
@@ -98,14 +111,17 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
 
     @Override
     protected void onPostExecute(FinanceUA financeUA) {
-
-        Log.i("RefreshThread", "onPostExecute");
+        if (financeUA == null) {
+            Log.i(TAG,"datas not read");
+            return;
+        }
+        Log.i(TAG, "onPostExecute");
 
         if (context.get() == null) {
-            Log.i("RefreshThread", "activity is destroy");
+            Log.i(TAG, "activity is destroy");
             return;//
         } else
-            Log.i("RefreshThread", "onPostExecute");
+            Log.i(TAG, "onPostExecute");
 
 
         UAFinancePreference uaFinancePreference = new UAFinancePreference((Context) context.get());
@@ -149,7 +165,7 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
 
         if (reDrawHandler.get() != null)
             ((Handler) reDrawHandler.get()).handleMessage(new Message());
-
+        Log.i(TAG,"datas sucsessuful reads");
         super.onPostExecute(financeUA);
     }
 }

@@ -7,27 +7,51 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 import smikhlevskiy.uafinance.R;
-import smikhlevskiy.uafinance.Threadas.RefreshFinanceUAAsyncTask;
+import smikhlevskiy.uafinance.Utils.UAFinancePreference;
 import smikhlevskiy.uafinance.model.Organization;
 
 public class OrganizationActivity extends AppCompatActivity {
+    UAFinancePreference uaFinancePreference;
+    EditText editTextSum;
+    TextView calcResultTextView;
+    Organization organization;
+
+    private String calcResult(String s) {
+
+
+        try {
+            Double d = Double.parseDouble(s) * organization.getSortVal();
+            String ss = new DecimalFormat("####.###").format(d);
+            if (ss.length() > 7)
+                return "######.##";
+            else
+                return ss;
+
+
+        } catch (NumberFormatException e) {
+            return "0.0";
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organization);
+
+        uaFinancePreference = new UAFinancePreference(this);
 
         ActionBar ab = getSupportActionBar();
         ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_gradient));
@@ -35,11 +59,10 @@ public class OrganizationActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
 
-        final Organization organization = (Organization) getIntent().getExtras().getParcelable("organization");
+        organization = (Organization) getIntent().getExtras().getParcelable("organization");
 
 
         ((TextView) findViewById(R.id.organization_title)).setText(organization.getTitle());
-
 
 
         String city = getIntent().getExtras().getString("city");
@@ -64,6 +87,34 @@ public class OrganizationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //---Calculator----------
+        ((TextView) findViewById(R.id.calckSum)).setText(uaFinancePreference.getAskBid());
+        ((TextView) findViewById(R.id.calckCurr)).setText(uaFinancePreference.getCurrancie());
+        editTextSum = (EditText) findViewById(R.id.editTextSum);
+
+        calcResultTextView = (TextView) findViewById(R.id.calckResult);
+        calcResultTextView.setText(calcResult(editTextSum.getText().toString()));
+
+        editTextSum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                calcResultTextView.setText(calcResult(s.toString()).toString());
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
     }
 
     @Override

@@ -81,6 +81,8 @@ public class OrganizationListAdapter extends BaseAdapter {
 
 
 
+
+
         return convertView;
     }
 }
