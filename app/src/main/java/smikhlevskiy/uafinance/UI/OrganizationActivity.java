@@ -16,13 +16,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+
 import java.text.DecimalFormat;
 
 import smikhlevskiy.uafinance.R;
 import smikhlevskiy.uafinance.Utils.UAFinancePreference;
 import smikhlevskiy.uafinance.model.Organization;
 
-public class OrganizationActivity extends AppCompatActivity {
+public class OrganizationActivity extends AppCompatActivity  implements OnMapReadyCallback {
     UAFinancePreference uaFinancePreference;
     EditText editTextSum;
     TextView calcResultTextView;
@@ -47,9 +51,15 @@ public class OrganizationActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organization);
+
+/*
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        */
 
         uaFinancePreference = new UAFinancePreference(this);
 
@@ -154,6 +164,12 @@ public class OrganizationActivity extends AppCompatActivity {
         }
 
 
+
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
     }
 }

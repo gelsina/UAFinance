@@ -62,7 +62,7 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
         StringBuilder bulder = new StringBuilder("");
         try {
 
-        Thread.sleep(10000);//simulate lon read
+       // Thread.sleep(10000);//simulate lon read
             //  from URL
             InputStreamReader isr;
             if (true) {
@@ -95,11 +95,13 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
         } catch (IOException e1) {
             e1.printStackTrace();
             return null;
-        } catch (InterruptedException e) {
+
+        }   /* catch (InterruptedException e) {
 
             e.printStackTrace();
             return null;
         }
+        */
 
         Gson gson = new Gson();
         //saveToCache();

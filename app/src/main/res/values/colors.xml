@@ -3,5 +3,5 @@
 <resources>
     <color name="myBlu">#55AADD</color>
     <color name="myYellow">#99CC22</color>
-
+    <color name="white">#D0FFFFFF</color>
 </resources>
