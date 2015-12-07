@@ -2,36 +2,51 @@ package smikhlevskiy.uafinance.UI;
 
 import android.app.TaskStackBuilder;
 import android.content.Intent;
+import android.location.Geocoder;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 import smikhlevskiy.uafinance.R;
+import smikhlevskiy.uafinance.Utils.GeocodingLocation;
 import smikhlevskiy.uafinance.Utils.UAFinancePreference;
 import smikhlevskiy.uafinance.model.Organization;
 
 public class OrganizationActivity extends AppCompatActivity  implements OnMapReadyCallback {
+    public String TAG=OrganizationActivity.class.getSimpleName();
     UAFinancePreference uaFinancePreference;
     EditText editTextSum;
     TextView calcResultTextView;
     Organization organization;
-
+    Geocoder geocoder;
+    private String city;
+    private GoogleMap mMap;
+    private UiSettings mUiSettings;
     private String calcResult(String s) {
 
 
@@ -55,11 +70,14 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organization);
 
-/*
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        */
+
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+
 
         uaFinancePreference = new UAFinancePreference(this);
 
@@ -75,7 +93,7 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
         ((TextView) findViewById(R.id.organization_title)).setText(organization.getTitle());
 
 
-        String city = getIntent().getExtras().getString("city");
+        city = getIntent().getExtras().getString("city");
         ((TextView) findViewById(R.id.organization_city)).setText(city);
         String region = getIntent().getExtras().getString("region");
         if (region.equals(city))
@@ -170,6 +188,64 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
+        mUiSettings = mMap.getUiSettings();
+        mUiSettings.setZoomControlsEnabled(true);
+        mUiSettings.setMyLocationButtonEnabled(true);
+
+        mMap.setMyLocationEnabled(true);
+
+        GeocodingLocation locationAddress = new GeocodingLocation();
+        locationAddress.getAddressFromLocation(city+", "+organization.getAddress(),
+                getApplicationContext(), new GeocoderHandler());
+
+        // Keep the UI Settings state in sync with the checkboxes.
+   //     mUiSettings.setZoomControlsEnabled(isChecked(R.id.zoom_buttons_toggle));
+   //     mUiSettings.setCompassEnabled(isChecked(R.id.compass_toggle));
+   //     mUiSettings.setMyLocationButtonEnabled(isChecked(R.id.mylocationbutton_toggle));
+   //     mMap.setMyLocationEnabled(isChecked(R.id.mylocationlayer_toggle));
+   //     mUiSettings.setScrollGesturesEnabled(isChecked(R.id.scroll_toggle));
+   //     mUiSettings.setZoomGesturesEnabled(isChecked(R.id.zoom_gestures_toggle));
+   //     mUiSettings.setTiltGesturesEnabled(isChecked(R.id.tilt_toggle));
+   //     mUiSettings.setRotateGesturesEnabled(isChecked(R.id.rotate_toggle));
+
+    }
+
+    private class GeocoderHandler extends Handler {
+        @Override
+        public void handleMessage(Message message) {
+            String locationAddress;
+            Bundle bundle = message.getData();
+
+            switch (message.what) {
+                case 0:
+
+                    locationAddress = bundle.getString("address");
+                    Toast.makeText(OrganizationActivity.this,locationAddress,Toast.LENGTH_LONG).show();
+                    Log.i(TAG, locationAddress);
+                    break;
+                case 1:
+
+                    //locationAddress = bundle.getString("address");
+                    //Toast.makeText(OrganizationActivity.this,locationAddress,Toast.LENGTH_LONG).show();
+                    double latitude=bundle.getDouble("latitude");
+                    double longitude=bundle.getDouble("longitude");
+
+                    mMap.moveCamera(CameraUpdateFactory
+                                    .newLatLngZoom(new LatLng(latitude, longitude), 16));
+                   // mMap.moveCamera(CameraUpdateFactory.zoomBy(17));
+
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude,longitude))
+                            .title(organization.getTitle())
+                    );
+                    break;
+
+                default:
+                    locationAddress = null;
+            }
+
+        }
     }
 }
