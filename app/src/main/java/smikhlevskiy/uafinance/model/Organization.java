@@ -3,12 +3,14 @@ package smikhlevskiy.uafinance.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by tcont98 on 07-Nov-15.
  */
-public class Organization  implements Parcelable {
+public class Organization implements Parcelable {
     private String id;
     private int oldId;
     private int orgType;
@@ -17,12 +19,16 @@ public class Organization  implements Parcelable {
     private String cityId;
     private String phone;
     private String address;
+
+
+    private double latitude;
+    private double longitude;
+
     private String link;
     public Map<String, Currencie> currencies;
 
 
-    private Double sortVal=0.0;
-
+    private Double sortVal = 0.0;
 
 
     public String getId() {
@@ -89,6 +95,7 @@ public class Organization  implements Parcelable {
         this.phone = phone;
     }
 
+
     public String getLink() {
         return link;
     }
@@ -122,7 +129,11 @@ public class Organization  implements Parcelable {
         dest.writeString(address);
         dest.writeString(link);
         dest.writeDouble(sortVal);
+        dest.writeDouble(latitude);
+        dest.writeDouble(longitude);
+
     }
+
     protected Organization(Parcel in) {
         id = in.readString();
         oldId = in.readInt();
@@ -131,9 +142,11 @@ public class Organization  implements Parcelable {
         regionId = in.readString();
         cityId = in.readString();
         phone = in.readString();
-        address=in.readString();
+        address = in.readString();
         link = in.readString();
         sortVal = in.readDouble();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
     }
 
     public static final Creator<Organization> CREATOR = new Creator<Organization>() {
@@ -147,6 +160,7 @@ public class Organization  implements Parcelable {
             return new Organization[size];
         }
     };
+
     public Double getSortVal() {
         return sortVal;
     }
@@ -154,4 +168,24 @@ public class Organization  implements Parcelable {
     public void setSortVal(Double sortVal) {
         this.sortVal = sortVal;
     }
+
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+
 }
+

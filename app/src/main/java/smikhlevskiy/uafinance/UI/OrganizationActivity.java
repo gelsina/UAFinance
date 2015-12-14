@@ -33,12 +33,12 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 
 import smikhlevskiy.uafinance.R;
-import smikhlevskiy.uafinance.Utils.GeocodingLocation;
+import smikhlevskiy.uafinance.Utils.CachGeocodingLocation;
 import smikhlevskiy.uafinance.Utils.UAFinancePreference;
 import smikhlevskiy.uafinance.model.Organization;
 
-public class OrganizationActivity extends AppCompatActivity  implements OnMapReadyCallback {
-    public String TAG=OrganizationActivity.class.getSimpleName();
+public class OrganizationActivity extends AppCompatActivity implements OnMapReadyCallback {
+    public String TAG = OrganizationActivity.class.getSimpleName();
     UAFinancePreference uaFinancePreference;
     EditText editTextSum;
     TextView calcResultTextView;
@@ -47,6 +47,7 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
     private String city;
     private GoogleMap mMap;
     private UiSettings mUiSettings;
+
     private String calcResult(String s) {
 
 
@@ -66,7 +67,7 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organization);
 
@@ -78,7 +79,6 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
         geocoder = new Geocoder(this, Locale.getDefault());
 
 
-
         uaFinancePreference = new UAFinancePreference(this);
 
         ActionBar ab = getSupportActionBar();
@@ -87,7 +87,11 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
         ab.setDisplayHomeAsUpEnabled(true);
 
 
+
         organization = (Organization) getIntent().getExtras().getParcelable("organization");
+
+        Log.i(TAG, "Lat:" + organization.getLatitude() + ", Longi:" + organization.getLongitude());
+
 
 
         ((TextView) findViewById(R.id.organization_title)).setText(organization.getTitle());
@@ -182,7 +186,6 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
         }
 
 
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -196,19 +199,31 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
 
         mMap.setMyLocationEnabled(true);
 
-        GeocodingLocation locationAddress = new GeocodingLocation();
-        locationAddress.getAddressFromLocation(city+", "+organization.getAddress(),
+        mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(organization.getLatitude(),
+                                organization.getLongitude()))
+                        .title(organization.getTitle())
+        );
+            mMap.moveCamera(CameraUpdateFactory
+                    .newLatLngZoom(new LatLng(organization.getLatitude(), organization.getLongitude()), 16));
+
+
+/*
+        CachGeocodingLocation cachGeocodingLocation = new CachGeocodingLocation();
+        cachGeocodingLocation.getAddressFromLocation(city + ", " + organization.getAddress(),
                 getApplicationContext(), new GeocoderHandler());
+*/
+
 
         // Keep the UI Settings state in sync with the checkboxes.
-   //     mUiSettings.setZoomControlsEnabled(isChecked(R.id.zoom_buttons_toggle));
-   //     mUiSettings.setCompassEnabled(isChecked(R.id.compass_toggle));
-   //     mUiSettings.setMyLocationButtonEnabled(isChecked(R.id.mylocationbutton_toggle));
-   //     mMap.setMyLocationEnabled(isChecked(R.id.mylocationlayer_toggle));
-   //     mUiSettings.setScrollGesturesEnabled(isChecked(R.id.scroll_toggle));
-   //     mUiSettings.setZoomGesturesEnabled(isChecked(R.id.zoom_gestures_toggle));
-   //     mUiSettings.setTiltGesturesEnabled(isChecked(R.id.tilt_toggle));
-   //     mUiSettings.setRotateGesturesEnabled(isChecked(R.id.rotate_toggle));
+        //     mUiSettings.setZoomControlsEnabled(isChecked(R.id.zoom_buttons_toggle));
+        //     mUiSettings.setCompassEnabled(isChecked(R.id.compass_toggle));
+        //     mUiSettings.setMyLocationButtonEnabled(isChecked(R.id.mylocationbutton_toggle));
+        //     mMap.setMyLocationEnabled(isChecked(R.id.mylocationlayer_toggle));
+        //     mUiSettings.setScrollGesturesEnabled(isChecked(R.id.scroll_toggle));
+        //     mUiSettings.setZoomGesturesEnabled(isChecked(R.id.zoom_gestures_toggle));
+        //     mUiSettings.setTiltGesturesEnabled(isChecked(R.id.tilt_toggle));
+        //     mUiSettings.setRotateGesturesEnabled(isChecked(R.id.rotate_toggle));
 
     }
 
@@ -222,23 +237,23 @@ public class OrganizationActivity extends AppCompatActivity  implements OnMapRea
                 case 0:
 
                     locationAddress = bundle.getString("address");
-                    Toast.makeText(OrganizationActivity.this,locationAddress,Toast.LENGTH_LONG).show();
+                    Toast.makeText(OrganizationActivity.this, locationAddress, Toast.LENGTH_LONG).show();
                     Log.i(TAG, locationAddress);
                     break;
                 case 1:
 
                     //locationAddress = bundle.getString("address");
                     //Toast.makeText(OrganizationActivity.this,locationAddress,Toast.LENGTH_LONG).show();
-                    double latitude=bundle.getDouble("latitude");
-                    double longitude=bundle.getDouble("longitude");
+                    double latitude = bundle.getDouble("latitude");
+                    double longitude = bundle.getDouble("longitude");
 
                     mMap.moveCamera(CameraUpdateFactory
-                                    .newLatLngZoom(new LatLng(latitude, longitude), 16));
-                   // mMap.moveCamera(CameraUpdateFactory.zoomBy(17));
+                            .newLatLngZoom(new LatLng(latitude, longitude), 16));
+                    // mMap.moveCamera(CameraUpdateFactory.zoomBy(17));
 
                     mMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(latitude,longitude))
-                            .title(organization.getTitle())
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(organization.getTitle())
                     );
                     break;
 

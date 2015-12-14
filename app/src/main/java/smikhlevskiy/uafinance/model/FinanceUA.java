@@ -1,13 +1,18 @@
 package smikhlevskiy.uafinance.model;
 
+import android.content.Context;
+import android.location.Address;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
+
+import smikhlevskiy.uafinance.Utils.UAFinancePreference;
 
 /**
  * Created by tcont98 on 07-Nov-15.
@@ -154,7 +159,7 @@ public class FinanceUA {
 
     }
 
-    public void calckMinMaxCurrencies(String[] keyCurrencies,String city) {
+    public void calckMinMaxCurrencies(String[] keyCurrencies, String city) {
         minMaxCurrencies = new HashMap<String, Currencie>();
 
         for (String key : keyCurrencies) {
@@ -178,8 +183,7 @@ public class FinanceUA {
 
                     if ((maxAskVal > askVal) || (maxAskVal == 0)) {
                         maxcur.setAsk(Double.toString(askVal));
-                        Log.i("MA:1", Double.toString(askVal));
-                        Log.i("MA:2", ((Currencie) minMaxCurrencies.get(key)).getAsk());
+
                     }
                     if ((minBidVal < bidVal) || (minBidVal == 0))
                         maxcur.setBid(Double.toString(bidVal));
@@ -190,12 +194,43 @@ public class FinanceUA {
 
         }
 
-        // Log.i("MainActivity:Ask",minMaxCurrencies.get("USD").getAsk());
-        // Log.i("MainActivity:Bid",minMaxCurrencies.get("USD").getBid());
+
     }
 
     public HashMap<String, Currencie> getMinMaxCurrencies() {
         return minMaxCurrencies;
     }
+
+    public String AddressByOrganization(Organization organization) {
+        if (cities.containsKey(organization.getCityId())) {
+            String mcity = cities.get(organization.getCityId());
+
+            String s = "Украина, " + mcity + ", " + organization.getAddress();
+            return s.replace(' ', '+');
+
+
+        }
+        return "";
+    }
+
+    public List<String> getAllAddresses(String prefCity) {
+        ArrayList<String> list = new ArrayList<String>();
+
+
+//-----j==0  -> current City    j==1 other City---
+        for (int j = 0; j <= 1; j++) {
+            for (Organization organization : organizations) {
+                if (cities.containsKey(organization.getCityId())) {
+                    String mcity = cities.get(organization.getCityId());
+                    if (((j == 0) && mcity.equals(prefCity)) || ((j == 1) && (!mcity.equals(prefCity)))) {
+                        list.add(
+                                AddressByOrganization(organization));
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
 
 }

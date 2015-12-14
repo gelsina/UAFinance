@@ -10,181 +10,185 @@
     tools:context="smikhlevskiy.uafinance.UI.MainActivity">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/hiderLayout"
         style="@style/hiderStyle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+>
 
         <Spinner
-            android:id="@+id/spinerCity"
+            android:id="@+id/spinerAskBid"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.45"></Spinner>
+            android:layout_alignParentRight="true"
+            ></Spinner>
 
 
         <Spinner
             android:id="@+id/spinerCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.4"></Spinner>
+            android:layout_toLeftOf="@+id/spinerAskBid"
+            ></Spinner>
+
+
 
         <Spinner
-            android:id="@+id/spinerAskBid"
+            android:id="@+id/spinerCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.15"></Spinner>
+            android:layout_toLeftOf="@+id/spinerCurrency"
+            ></Spinner>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-<RelativeLayout
-    android:id="@+id/curRelativeLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/hiderStyle"
-    android:layout_alignParentBottom="true"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    >
-    <GridLayout
-        android:id="@+id/curGridLayout"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
+    <RelativeLayout
+        android:id="@+id/curRelativeLayout"
+        style="@style/hiderStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
-        android:columnCount="3"
-        >
-
-
-        <TextView
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-
-            android:text="@string/ask" />
-
-
-
-        <TextView
+        <GridLayout
+            android:id="@+id/curGridLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="@string/currancie" />
+            android:layout_centerInParent="true"
+
+            android:columnCount="3">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:text="@string/bid" />
-        <!--   USD    -->
+            <TextView
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+                android:text="@string/ask" />
 
 
-        <TextView
-            android:id="@+id/USD_bid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="1"
-            android:text="@string/nullvall" />
-
-        <TextView
-            android:id="@+id/USD_cur_name"
-            style="@style/hiderRedTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="1"
-
-            android:text="@string/USD" />
-
-        <TextView
-            android:id="@+id/USD_ask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="1"
-            android:text="@string/nullvall" />
-
-        <!--   EUR    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:text="@string/currancie" />
 
 
-        <TextView
-            android:id="@+id/EUR_bid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="2"
-            android:text="@string/nullvall" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:text="@string/bid" />
+            <!--   USD    -->
 
-        <TextView
-            android:id="@+id/EUR_cur_name"
-            style="@style/hiderRedTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="2"
-            android:text="@string/EUR" />
 
-        <TextView
-            android:id="@+id/EUR_ask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="2"
-            android:text="@string/nullvall" />
+            <TextView
+                android:id="@+id/USD_bid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="1"
+                android:text="@string/nullvall" />
 
-        <!--   RUB    -->
+            <TextView
+                android:id="@+id/USD_cur_name"
+                style="@style/hiderRedTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="1"
 
-        <TextView
-            android:id="@+id/RUB_bid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="3"
-            android:text="@string/nullvall" />
+                android:text="@string/USD" />
 
-        <TextView
-            android:id="@+id/RUB_cur_name"
-            style="@style/hiderRedTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="3"
-            android:text="@string/RUB" />
+            <TextView
+                android:id="@+id/USD_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="1"
+                android:text="@string/nullvall" />
 
-        <TextView
-            android:id="@+id/RUB_ask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/custom_vertical_margin"
-            android:layout_row="3"
-            android:text="@string/nullvall" />
+            <!--   EUR    -->
 
-    </GridLayout>
-</RelativeLayout>
+
+            <TextView
+                android:id="@+id/EUR_bid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="2"
+                android:text="@string/nullvall" />
+
+            <TextView
+                android:id="@+id/EUR_cur_name"
+                style="@style/hiderRedTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="2"
+                android:text="@string/EUR" />
+
+            <TextView
+                android:id="@+id/EUR_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="2"
+                android:text="@string/nullvall" />
+
+            <!--   RUB    -->
+
+            <TextView
+                android:id="@+id/RUB_bid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="3"
+                android:text="@string/nullvall" />
+
+            <TextView
+                android:id="@+id/RUB_cur_name"
+                style="@style/hiderRedTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="3"
+                android:text="@string/RUB" />
+
+            <TextView
+                android:id="@+id/RUB_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/custom_vertical_margin"
+                android:layout_row="3"
+                android:text="@string/nullvall" />
+
+        </GridLayout>
+    </RelativeLayout>
 
     <ListView
 
@@ -193,8 +197,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/curRelativeLayout"
-        android:layout_below="@id/hiderLayout"
-        >
+        android:layout_below="@id/hiderLayout">
 
 
     </ListView>

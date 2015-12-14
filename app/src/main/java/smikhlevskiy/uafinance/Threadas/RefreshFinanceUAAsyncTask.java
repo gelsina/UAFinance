@@ -1,6 +1,7 @@
 package smikhlevskiy.uafinance.Threadas;
 
 import android.content.Context;
+import android.location.Address;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -20,6 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import smikhlevskiy.uafinance.R;
+import smikhlevskiy.uafinance.Utils.CachGeocodingLocation;
 import smikhlevskiy.uafinance.Utils.UAFinancePreference;
 import smikhlevskiy.uafinance.adapters.OrganizationListAdapter;
 import smikhlevskiy.uafinance.model.FinanceUA;
@@ -39,7 +42,7 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
     WeakReference<Context> context;
     WeakReference<Handler> reDrawHandler;
 
-    static final String TAG="RefreshThread";
+    static final String TAG = RefreshFinanceUAAsyncTask.class.getSimpleName();
 
     String tempFile;
 
@@ -62,7 +65,7 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
         StringBuilder bulder = new StringBuilder("");
         try {
 
-       // Thread.sleep(10000);//simulate lon read
+            // Thread.sleep(10000);//simulate lon read
             //  from URL
             InputStreamReader isr;
             if (true) {
@@ -106,7 +109,32 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
         Gson gson = new Gson();
         //saveToCache();
         FinanceUA financeUA = (FinanceUA) gson.fromJson(bulder.toString(), FinanceUA.class);
+        CachGeocodingLocation cachGeocodingLocation = null;
+        if (context.get() != null)
+            cachGeocodingLocation = new CachGeocodingLocation((Context) context.get());
+        //get geo Datas
+        UAFinancePreference uaFinancePreference = new UAFinancePreference((Context) context.get());
+        String prefCity = uaFinancePreference.getCity();
+        for (Organization organization : financeUA.getOrganizations()) {
+            String city = financeUA.getCities().get(organization.getCityId());
+            if ((cachGeocodingLocation != null) && city.equals(prefCity)) {
 
+/*
+                Address address = cachGeocodingLocation.getAddressFromLocation(
+                        city + ", " + organization.getAddress());
+                        */
+                LatLng latLng=cachGeocodingLocation.getAddressFromLocationByURL(financeUA.AddressByOrganization(organization));
+                if (latLng != null) {
+                    organization.setLatitude(latLng.latitude);
+                    organization.setLongitude(latLng.longitude);
+
+                    Log.i(TAG, organization.getTitle());
+                }
+
+
+            }
+            ;
+        }
 
         return financeUA;
     }
@@ -114,10 +142,10 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
     @Override
     protected void onPostExecute(FinanceUA financeUA) {
         if (financeUA == null) {
-            Log.i(TAG,"datas not read");
+            Log.i(TAG, "datas not read");
             return;
         }
-        Log.i(TAG, "onPostExecute");
+
 
         if (context.get() == null) {
             Log.i(TAG, "activity is destroy");
@@ -165,9 +193,13 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
         ((OrganizationListAdapter) organizationListAdapter.get()).setFinanceUA(financeUA);
         ((OrganizationListAdapter) organizationListAdapter.get()).notifyDataSetChanged();
 
-        if (reDrawHandler.get() != null)
-            ((Handler) reDrawHandler.get()).handleMessage(new Message());
-        Log.i(TAG,"datas sucsessuful reads");
+        if (reDrawHandler.get() != null) {
+
+            Message message = new Message();
+            message.what = 1;
+            ((Handler) reDrawHandler.get()).handleMessage(message);
+            Log.i(TAG, "datas sucsessuful reads");
+        }
         super.onPostExecute(financeUA);
     }
 }

@@ -1,6 +1,5 @@
 package smikhlevskiy.uafinance.UI;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +22,7 @@ import android.widget.TextView;
 
 
 import smikhlevskiy.uafinance.R;
+import smikhlevskiy.uafinance.Threadas.GeoCachThread;
 import smikhlevskiy.uafinance.Threadas.RefreshFinanceUAAsyncTask;
 import smikhlevskiy.uafinance.Utils.UAFinancePreference;
 import smikhlevskiy.uafinance.adapters.OrganizationListAdapter;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     UAFinancePreference uaFinancePreference;
     ListView organizationListView;
     Handler mainActivityReDrawHandler;
+    boolean startRefresh = true;
 
     /*-----------*/
     public void startRefreshDatas() {
@@ -81,8 +82,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "Begin OnCreate");
 
+
+        Log.i(TAG, "Begin OnCreate");
+        startRefresh = true;
         setContentView(R.layout.activity_main);
 
         //ActionBar
@@ -191,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("city", organizationListAdapter.getFinanceUA().getCities().get(organization.getCityId()));
                 intent.putExtra("region", organizationListAdapter.getFinanceUA().getRegions().get(organization.getRegionId()));
 
+
                 startActivity(intent);
 
             }
@@ -206,41 +210,44 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void handleMessage(Message msg) {
-                reDrawMainActivity();
-                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 1://on Read finance datas
+                        reDrawMainActivity();
+                        new GeoCachThread(MainActivity.this,organizationListAdapter.getFinanceUA().getAllAddresses(uaFinancePreference.getCity())).start();
+                        break;
+
+                }
+            }};
+
+                //startRefreshDatas();
+                Log.i(TAG, "End OnCreate");
             }
-        };
-
-        //startRefreshDatas();
-        Log.i(TAG, "End OnCreate");
-    }
 
 
+            @Override
+            public boolean onCreateOptionsMenu(Menu menu) {
+                // Inflate the menu; this adds items to the action bar if it is present.
+                getMenuInflater().inflate(R.menu.menu_main, menu);
+                return true;
+            }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+            @Override
+            public boolean onOptionsItemSelected(MenuItem item) {
+                // Handle action bar item clicks here. The action bar will
+                // automatically handle clicks on the Home/Up button, so long
+                // as you specify a parent activity in AndroidManifest.xml.
 
 
-        int id = item.getItemId();
+                int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+                //noinspection SimplifiableIfStatement
 
-        switch (item.getItemId()) {
-            case R.id.refreshmenuitem:
-                startRefreshDatas();
-                break;
-            case android.R.id.home:
-                finish();
+                switch (item.getItemId()) {
+                    case R.id.refreshmenuitem:
+                        startRefreshDatas();
+                        break;
+                    case android.R.id.home:
+                        finish();
                 /*
                 Intent upIntent = NavUtils.getParentActivityIntent(this);
                 if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
@@ -257,15 +264,17 @@ public class MainActivity extends AppCompatActivity {
                     NavUtils.navigateUpTo(this, upIntent);
                 }
                 */
-                return true;
+                        return true;
+                }
+
+                return super.onOptionsItemSelected(item);
+            }
+
+            @Override
+            protected void onStart() {
+                super.onStart();
+                if (startRefresh)
+                    startRefreshDatas();
+                startRefresh = false;
+            }
         }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        startRefreshDatas();
-    }
-}
