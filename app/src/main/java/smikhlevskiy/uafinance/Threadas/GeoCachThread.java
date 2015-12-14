@@ -12,7 +12,7 @@ import smikhlevskiy.uafinance.model.Organization;
  */
 public class GeoCachThread extends Thread {
     public static String DB_NAME = "GEOCACHDB";
-    public static int DB_VERSION = 1;
+    public static int DB_VERSION = 3;
     private List<String> textAddress;
     private Context context;
 
@@ -26,9 +26,9 @@ public class GeoCachThread extends Thread {
     @Override
     public void run() {
         GeoCachDB geoCachDB = new GeoCachDB(context, DB_NAME, null, DB_VERSION);
-        for (String text : textAddress) {
-            geoCachDB.ControlAddress(text);
+
+        geoCachDB.ControlAddress(textAddress);
         }
-    }
+
 
 }

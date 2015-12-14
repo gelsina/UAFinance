@@ -10,48 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="964f676c-894e-444a-93d1-5bcb7a21f9af" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\appcompat_v7_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\butterknife_7_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\gson_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\mediarouter_v7_22_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_ads_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_analytics_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_appindexing_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_appinvite_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_appstate_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_base_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_basement_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_cast_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_drive_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_fitness_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_games_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_gcm_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_identity_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_location_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_maps_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_measurement_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_nearby_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_panorama_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_plus_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_safetynet_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_vision_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_wallet_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\play_services_wearable_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\support_annotations_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\.idea\libraries\support_v4_23_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\andrstudioworkspace\UAFinance\app\src\main\java\smikhlevskiy\uafinance\Utils\GeocodingLocation.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/FinanceUA.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/FinanceUA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/UI/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/UI/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/Organization.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/Organization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/UI/OrganizationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/UI/OrganizationActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/GeoCachDB.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/GeoCachDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/GeoCachThread.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/GeoCachThread.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/RefreshFinanceUAAsyncTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/RefreshFinanceUAAsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="UAFinance.iws" />
@@ -83,11 +46,23 @@
       <file leaf-file-name="CachGeocodingLocation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+            <state vertical-scroll-proportion="2.3448277">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3326#4305#0" expanded="true" />
+                <element signature="e#4304#4305#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.043256998">
+              <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -129,13 +104,13 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/RefreshFinanceUAAsyncTask.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="17" selection-start-line="131" selection-start-column="17" selection-end-line="131" selection-end-column="17" />
+              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
-                <element signature="e#5780#5788#0" expanded="true" />
-                <element signature="e#6225#6289#0" expanded="true" />
-                <element signature="e#6322#6386#0" expanded="true" />
-                <element signature="e#6419#6483#0" expanded="true" />
-                <element signature="e#6926#6934#0" expanded="true" />
+                <element signature="e#5548#5556#0" expanded="true" />
+                <element signature="e#5993#6057#0" expanded="true" />
+                <element signature="e#6090#6154#0" expanded="true" />
+                <element signature="e#6187#6251#0" expanded="true" />
+                <element signature="e#6694#6702#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,40 +130,21 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/GeoCachThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-              <folding>
-                <element signature="e#1293#1330#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.777778">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GeoCachDB.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GeoCachDB.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/GeoCachDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43765903">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-2.9310346">
+              <caret line="86" column="60" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1980#1996#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1930,14 +1886,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/UI/OrganizationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/GetLatLonFinanceUA.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/Organization.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/GeoCachThread.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/UI/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/FinanceUA.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/RefreshFinanceUAAsyncTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/GeoCachDB.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/GeoCachThread.java" />
       </list>
     </option>
   </component>
@@ -2354,7 +2310,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1320" height="784" extended-state="0" />
+    <frame x="-8" y="-8" width="1320" height="784" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2720,16 +2676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding>
-            <element signature="e#1293#1330#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk1/sources/android-23/android/content/Context.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.529263">
@@ -2773,16 +2719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/Organization.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2802,13 +2738,24 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/RefreshFinanceUAAsyncTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="131" column="17" selection-start-line="131" selection-start-column="17" selection-end-line="131" selection-end-column="17" />
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding>
-            <element signature="e#5780#5788#0" expanded="true" />
-            <element signature="e#6225#6289#0" expanded="true" />
-            <element signature="e#6322#6386#0" expanded="true" />
-            <element signature="e#6419#6483#0" expanded="true" />
-            <element signature="e#6926#6934#0" expanded="true" />
+            <element signature="e#5548#5556#0" expanded="true" />
+            <element signature="e#5993#6057#0" expanded="true" />
+            <element signature="e#6090#6154#0" expanded="true" />
+            <element signature="e#6187#6251#0" expanded="true" />
+            <element signature="e#6694#6702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/GeoCachDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9310346">
+          <caret line="86" column="60" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1980#1996#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2816,15 +2763,27 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Threadas/GeoCachThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/model/GeoCachDB.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/smikhlevskiy/uafinance/Utils/CachGeocodingLocation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43765903">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.3448277">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3326#4305#0" expanded="true" />
+            <element signature="e#4304#4305#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.043256998">
+          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
           <folding />
         </state>
       </provider>

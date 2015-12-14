@@ -31,14 +31,9 @@ import smikhlevskiy.uafinance.R;
 public class CachGeocodingLocation {
 
     private static final String TAG = CachGeocodingLocation.class.getSimpleName();
-    private Geocoder geocoder;
-    private Context context;
+    //private Geocoder geocoder;
 
-    public CachGeocodingLocation(Context context) {
-        //geocoder = new Geocoder(context, new Locale("ru","RU"));
-        geocoder = new Geocoder(context, new Locale("uk", "UA"));
-        this.context = context;
-    }
+
 
 
     public LatLng getAddressFromLocationByURL(final String locationAddress) {
@@ -87,7 +82,7 @@ public class CachGeocodingLocation {
         }
 
     }
-
+/* //
     public Address getAddressFromLocation(final String locationAddress) {
 
 
@@ -113,7 +108,7 @@ public class CachGeocodingLocation {
         }
     }
 
-
+*/
     public void getHandleAddressFromLocation(final String locationAddress
             , final Handler handler) {
         Thread thread = new Thread() {
@@ -121,27 +116,28 @@ public class CachGeocodingLocation {
             public void run() {
 
 
-                Address address = getAddressFromLocation(locationAddress);
+                //Address address = getAddressFromLocation(locationAddress);
+                LatLng latLng=getAddressFromLocationByURL(locationAddress);
 
 
                 Message message = Message.obtain();
                 message.setTarget(handler);
 
 
-                if (address != null) {
+                if (latLng != null) {
 
                     message.what = 1;
                     Bundle bundle = new Bundle();
 
-                    bundle.putDouble("latitude", address.getLatitude());
-                    bundle.putDouble("longitude", address.getLongitude());
+                    bundle.putDouble("latitude", latLng.latitude);
+                    bundle.putDouble("longitude", latLng.longitude);
                     message.setData(bundle);
                 } else {
                     message.what = 0;
                     Bundle bundle = new Bundle();
 
                     bundle.putString("address", locationAddress +
-                            context.getString(R.string.FindLatLonError));
+                            ":null");
                     message.setData(bundle);
                 }
                 message.sendToTarget();

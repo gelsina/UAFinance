@@ -110,8 +110,8 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
         //saveToCache();
         FinanceUA financeUA = (FinanceUA) gson.fromJson(bulder.toString(), FinanceUA.class);
         CachGeocodingLocation cachGeocodingLocation = null;
-        if (context.get() != null)
-            cachGeocodingLocation = new CachGeocodingLocation((Context) context.get());
+
+            cachGeocodingLocation = new CachGeocodingLocation();
         //get geo Datas
         UAFinancePreference uaFinancePreference = new UAFinancePreference((Context) context.get());
         String prefCity = uaFinancePreference.getCity();
@@ -119,10 +119,7 @@ public class RefreshFinanceUAAsyncTask extends AsyncTask<String, Void, FinanceUA
             String city = financeUA.getCities().get(organization.getCityId());
             if ((cachGeocodingLocation != null) && city.equals(prefCity)) {
 
-/*
-                Address address = cachGeocodingLocation.getAddressFromLocation(
-                        city + ", " + organization.getAddress());
-                        */
+
                 LatLng latLng=cachGeocodingLocation.getAddressFromLocationByURL(financeUA.AddressByOrganization(organization));
                 if (latLng != null) {
                     organization.setLatitude(latLng.latitude);
