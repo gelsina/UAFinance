@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Locale;
 
 import smikhlevskiy.uafinance.R;
-
+/*----*/
 /**
  * Created by tcont98 on 05-Dec-15.
  */
